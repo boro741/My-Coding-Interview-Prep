@@ -2,7 +2,6 @@ import java.util.*;
 
 class TreeNode {
   char val;
-  int hd;
   TreeNode left;
   TreeNode right;
 
@@ -11,41 +10,31 @@ class TreeNode {
   }
 };
 
-class javaTest {
+class verticalOrderDFS {
   public static TreeMap<Integer,List<Character>> traverse(TreeNode root) {
     if(root == null)
         return null;
 
-    Queue<TreeNode> queue = new LinkedList<>();
     TreeMap<Integer,List<Character>> hm = new TreeMap<>();
-    System.out.println("HD: " +root.hd);
     int hd = 0;
-
-    queue.offer(root);
     hm.put(0, new ArrayList<>());
     
-
-    while(!queue.isEmpty()){
-        TreeNode currentNode = queue.poll();
-        hd = currentNode.hd;
-        hm.get(hd).add(currentNode.val);
-
-        if(currentNode.left != null){
-            queue.offer(currentNode.left);
-            currentNode.left.hd = hd - 1;
-            if(!hm.containsKey(hd-1))
-                hm.put(hd-1, new ArrayList<>());
-        }
-
-        if(currentNode.right != null){
-            queue.offer(currentNode.right);
-            currentNode.right.hd = hd + 1;
-            if(!hm.containsKey(hd+1))
-                hm.put(hd+1, new ArrayList<>());
-        }
-    }
-
+    verticalOrder(hm,root,hd);
+    
     return hm;
+  }
+
+  static void verticalOrder(TreeMap<Integer,List<Character>> hm, TreeNode node,int hd){
+    if(node == null)
+        return;
+    
+    if(!hm.containsKey(hd)){
+        hm.put(hd, new ArrayList<>());
+    }
+    hm.get(hd).add(node.val);
+
+    verticalOrder(hm, node.left,hd-1);
+    verticalOrder(hm, node.right,hd+1);
   }
 
   public static void main(String[] args) {
@@ -70,8 +59,6 @@ class javaTest {
     System.out.println("Vertical order traversal: " + result);
   }
 }
-
-
 
 
 /*

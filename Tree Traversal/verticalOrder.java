@@ -26,7 +26,7 @@ class verticalOrder {
 
     while(!queue.isEmpty()){
         TreeNode currentNode = queue.poll();
-        hd = currentNode.hd;
+        hd = currentNode.hd;   // Note: hd for any node is defalutly initialized to 0;
 
         hm.get(hd).add(currentNode.val);
 
