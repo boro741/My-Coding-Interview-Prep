@@ -47,25 +47,13 @@ int cal(string a,string b){
 	return ans;
 }
 int main(){
-	int N;
-	cin >> N;
-	string s;
-	cin >> s;
-	string a,b;
-	
-	a=s.substr(0,N/2);
-	b=s.substr(N/2,N/2);
-	string ap=a , bp =b;
-    
-    int ans=equals(ap,bp);
-    
-	sort(a.begin(),a.end());
-	sort(b.begin(),b.end());
- 
-	ans=min(ans,cal(a,b));
-	ans=min(ans,cal(b,a));
- 
-	cout<<ans;
-
+	string s = "n";
+    //cin>>s;
+    char c;
+    for(int i = 0; i < s.length();i++){
+        c = char(int(s[i]+s[i]-'a')%26 +'a');
+        cout<<c;
+    }
+	cout<<endl;
     return 0;
 }

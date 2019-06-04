@@ -11,7 +11,7 @@ class TreeNode {
   }
 };
 
-class javaTest {
+class verticalOrder {
   public static TreeMap<Integer,List<Character>> traverse(TreeNode root) {
     if(root == null)
         return null;
@@ -27,7 +27,8 @@ class javaTest {
     while(!queue.isEmpty()){
         TreeNode currentNode = queue.poll();
         hd = currentNode.hd;
-        hm.get(currentNode.hd).add(currentNode.val);
+
+        hm.get(hd).add(currentNode.val);
 
         if(currentNode.left != null){
             queue.offer(currentNode.left);
@@ -67,17 +68,10 @@ class javaTest {
 
     TreeMap<Integer,List<Character>> result = traverse(root);
     System.out.println("Vertical order traversal: " + result);
-    System.out.println("Top View: ");
-    result.forEach((K,V)->{
-        System.out.println(K+" "+V.get(0));
-    });
-
-    System.out.println("Bottom View: ");
-    result.forEach((K,V)->{
-        System.out.println(K+" "+V.get(V.size() - 1));
-    });
   }
 }
+
+
 
 
 /*

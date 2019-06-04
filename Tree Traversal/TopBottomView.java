@@ -11,7 +11,7 @@ class TreeNode {
   }
 };
 
-class javaTest {
+class TopBottomView {
   public static TreeMap<Integer,List<Character>> traverse(TreeNode root) {
     if(root == null)
         return null;
